@@ -14,6 +14,7 @@ public:
 	queue() {	//Constructor
 		cout << "Queue capacity is: "; cin >> capasity;
 		our_queue = new int[capasity];
+		start = 0; end = -1; num_elements = 0;
 	};		
 
 	~queue() {	//Destructor
