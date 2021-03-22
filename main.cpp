@@ -2,6 +2,7 @@
 #include "queue.h"
 
 int main() {
+	setlocale(LC_ALL, "Russian");
 	int col, row;
 	char** labyrinth = read_file(col, row);
 
@@ -11,5 +12,7 @@ int main() {
 		}
 		cout << endl;
 	}
+
 	delete_matr(labyrinth, row);
+	
 }
