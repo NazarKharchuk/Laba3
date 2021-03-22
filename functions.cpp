@@ -29,6 +29,7 @@ char** read_file(int& col, int& row) {
 		for (int j = 0; j < col; j++) {
 			if (!fin2.eof()) {
 				fin2.get(item);
+				if(j!=0)fin2.get(item);
 				if (item == '\n') fin2.get(item);
 				labyrinth[i][j] = item;
 			}
