@@ -57,18 +57,24 @@ point_passport* alg_dijkstra(char** labyrinth, int row, int col, int vert_num) {
 
 	queue<koordinats> our_queue;		//Queue
 	our_queue.enqueue(S);
+	using_points[0].point.i = S.i;
+	using_points[0].point.j = S.j;
+	using_points[0].step = 0;
+	using_points[0].parent.i = S.i;
+	using_points[0].parent.j = S.j;
 
 	koordinats cur_point, neigh_point;
 	int neighbours[4][2] = { {-1,0},{0,-1},{1,0},{0,1} };
-	int pos, X=0;
-	int step_num = 0;
+	int pos, X=1;
+	int step_num;
 	bool finish = false;
 
 	while (!our_queue.is_empty()) {
 		cur_point = our_queue.first_element();
 		our_queue.dequeue();
 
-		step_num++;
+		pos = find_point(using_points, X, cur_point);
+		step_num = using_points[pos].step + 1 ;
 		for (int n = 0; n < 4; n++) {
 			neigh_point.i = cur_point.i + neighbours[n][0];
 			neigh_point.j = cur_point.j + neighbours[n][1];
@@ -80,6 +86,7 @@ point_passport* alg_dijkstra(char** labyrinth, int row, int col, int vert_num) {
 				using_points[X].step = step_num;
 				using_points[X].parent.i = cur_point.i;
 				using_points[X].parent.j = cur_point.j;
+				X++;
 				break;
 			}
 
