@@ -13,6 +13,11 @@ int main() {
 		cout << endl;
 	}
 
+	point_passport* using_points = alg_dijkstra(labyrinth, row, col);
+
+
+
+	delete [] using_points;
 	delete_matr(labyrinth, row);
 	
 }

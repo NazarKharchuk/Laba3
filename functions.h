@@ -20,3 +20,4 @@ struct point_passport {
 
 char** read_file(int&,  int&);
 void delete_matr(char**, int);
+point_passport* alg_dijkstra(char **, int, int);

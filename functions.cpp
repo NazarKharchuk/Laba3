@@ -48,3 +48,14 @@ void delete_matr(char** labyrinth, int row) {
 	}
 	delete[] labyrinth;
 }
+
+//Dijkstra’s algorithm
+point_passport* alg_dijkstra(char** labyrinth, int row, int col) {
+	point_passport* using_points = new point_passport;
+
+
+
+
+	return using_points;
+}
+
