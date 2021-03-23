@@ -22,3 +22,4 @@ char** read_file(int&,  int&);
 void delete_matr(char**, int);
 point_passport* alg_dijkstra(char **, int, int, int);
 int vert_num(char**, int, int);
+int find_point(point_passport*, int, koordinats);

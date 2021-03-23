@@ -53,7 +53,23 @@ void delete_matr(char** labyrinth, int row) {
 point_passport* alg_dijkstra(char** labyrinth, int row, int col, int vert_num) {
 	point_passport* using_points = new point_passport[vert_num];
 
+	koordinats S{ 6,1 }, E{ 1,6 };		//Start and end point
 
+	queue<koordinats> our_queue;		//Queue
+	our_queue.enqueue(S);
+
+	koordinats cur_point, neigh_point;
+	int neighbours[4][2] = { {-1,0},{0,-1},{1,0},{0,1} };
+
+	while (!our_queue.is_empty()) {
+		cur_point = our_queue.first_element();
+		our_queue.dequeue();
+
+		for (int n = 0; n < 4; n++) {
+			neigh_point.i = cur_point.i + neighbours[n][0];
+			neigh_point.j = cur_point.j + neighbours[n][1];
+		}
+	}
 
 
 	return using_points;
@@ -70,3 +86,11 @@ int vert_num(char** labyrinth, int row, int col ) {
 	return num;
 }
 
+//Did we use a this point?
+int find_point(point_passport* using_points, int size, koordinats P) {
+	int i = -1;
+	for (int n = 0; n < size; n++) {
+		if ((using_points[n].point.i == P.i) && (using_points[n].point.j == P.j)) i = n;
+	}
+	return i;
+}
