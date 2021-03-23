@@ -50,12 +50,23 @@ void delete_matr(char** labyrinth, int row) {
 }
 
 //Dijkstra’s algorithm
-point_passport* alg_dijkstra(char** labyrinth, int row, int col) {
-	point_passport* using_points = new point_passport;
+point_passport* alg_dijkstra(char** labyrinth, int row, int col, int vert_num) {
+	point_passport* using_points = new point_passport[vert_num];
 
 
 
 
 	return using_points;
+}
+
+//A function that looks for the number of vertices of a graph
+int vert_num(char** labyrinth, int row, int col ) {
+	int num = 0;
+	for (int i = 0; i < row; i++) {
+		for (int j = 0; j < col; j++){
+			if (labyrinth[i][j] == ' ') num++;
+		}
+	}
+	return num;
 }
 
