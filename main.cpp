@@ -14,10 +14,9 @@ int main() {
 	}
 
 	int num_of_vert = vert_num(labyrinth, row, col);
-	cout << num_of_vert;
+	cout << num_of_vert<<endl;
 
 	point_passport* using_points = alg_dijkstra(labyrinth, row, col, num_of_vert);
-
 
 
 	delete [] using_points;
