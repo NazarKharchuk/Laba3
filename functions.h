@@ -20,6 +20,7 @@ struct point_passport {
 
 char** read_file(int&,  int&);
 void delete_matr(char**, int);
-point_passport* alg_dijkstra(char **, int, int, int);
+point_passport* alg_dijkstra(char **, int, int, int, koordinats, koordinats, int&);
 int vert_num(char**, int, int);
 int find_point(point_passport*, int, koordinats);
+void print_lab(char**, int, int);

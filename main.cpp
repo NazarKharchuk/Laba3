@@ -6,17 +6,15 @@ int main() {
 	int col, row;
 	char** labyrinth = read_file(col, row);
 
-	for (int i = 0; i < row; i++) {
-		for (int j = 0; j < col; j++) {
-			cout <<setw(2)<< labyrinth[i][j];
-		}
-		cout << endl;
-	}
+	print_lab(labyrinth, row, col);
+
+	koordinats S{ 6,1 }, E{ 1,6 };		//Start and end point
 
 	int num_of_vert = vert_num(labyrinth, row, col);
 	cout << num_of_vert<<" - recommended capacity."<< endl;
 
-	point_passport* using_points = alg_dijkstra(labyrinth, row, col, num_of_vert);
+	int used_vert = 0;
+	point_passport* using_points = alg_dijkstra(labyrinth, row, col, num_of_vert, S, E, used_vert);
 
 
 	delete [] using_points;

@@ -50,10 +50,8 @@ void delete_matr(char** labyrinth, int row) {
 }
 
 //Dijkstra’s algorithm
-point_passport* alg_dijkstra(char** labyrinth, int row, int col, int vert_num) {
+point_passport* alg_dijkstra(char** labyrinth, int row, int col, int vert_num, koordinats S, koordinats E, int& X) {
 	point_passport* using_points = new point_passport[vert_num];
-
-	koordinats S{ 6,1 }, E{ 1,6 };		//Start and end point
 
 	queue<koordinats> our_queue;		//Queue
 	our_queue.enqueue(S);
@@ -65,7 +63,8 @@ point_passport* alg_dijkstra(char** labyrinth, int row, int col, int vert_num) {
 
 	koordinats cur_point, neigh_point;
 	int neighbours[4][2] = { {-1,0},{0,-1},{1,0},{0,1} };
-	int pos, X=1;
+	int pos;
+	X=1;
 	int step_num;
 	bool finish = false;
 
@@ -136,4 +135,14 @@ int find_point(point_passport* using_points, int size, koordinats P) {
 		if ((using_points[n].point.i == P.i) && (using_points[n].point.j == P.j)) i = n;
 	}
 	return i;
+}
+
+//A function that print labyrinth
+void print_lab(char** labyrinth, int row, int col) {
+	for (int i = 0; i < row; i++) {
+		for (int j = 0; j < col; j++) {
+			cout << setw(2) << labyrinth[i][j];
+		}
+		cout << endl;
+	}
 }
