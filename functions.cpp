@@ -85,7 +85,6 @@ point_passport* alg_dijkstra(char** labyrinth, int row, int col, int vert_num, k
 				using_points[X].step = step_num;
 				using_points[X].parent.i = cur_point.i;
 				using_points[X].parent.j = cur_point.j;
-				X++;
 				break;
 			}
 
