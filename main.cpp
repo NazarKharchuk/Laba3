@@ -16,6 +16,8 @@ int main() {
 	int used_vert = 0;
 	point_passport* using_points = alg_dijkstra(labyrinth, row, col, num_of_vert, S, E, used_vert);
 
+	show_path(labyrinth, row, col, using_points, used_vert, E);
+	print_lab(labyrinth, row, col);
 
 	delete [] using_points;
 	delete_matr(labyrinth, row);

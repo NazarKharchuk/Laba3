@@ -146,3 +146,18 @@ void print_lab(char** labyrinth, int row, int col) {
 		cout << endl;
 	}
 }
+
+char character(int num) 
+{
+	char ch;
+	if (num < 10) 
+	{
+		ch = '0' + num;
+		return ch;
+	}
+	else 
+	{
+		ch = 'a' + num - 10;
+		return ch;
+	}
+}
