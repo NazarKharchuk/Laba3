@@ -128,7 +128,7 @@ int vert_num(char** labyrinth, int row, int col ) {
 	return num;
 }
 
-//Did we use a this point?
+//Did we use this point?
 int find_point(point_passport* using_points, int size, koordinats P) {
 	int i = -1;
 	for (int n = 0; n < size; n++) {
@@ -137,7 +137,7 @@ int find_point(point_passport* using_points, int size, koordinats P) {
 	return i;
 }
 
-//A function that print labyrinth
+//A function that prints labyrinth
 void print_lab(char** labyrinth, int row, int col) {
 	for (int i = 0; i < row; i++) {
 		for (int j = 0; j < col; j++) {
@@ -147,6 +147,7 @@ void print_lab(char** labyrinth, int row, int col) {
 	}
 }
 
+//Function, which converts number to char
 char character(int num) 
 {
 	char ch;
@@ -159,5 +160,34 @@ char character(int num)
 	{
 		ch = 'a' + num - 10;
 		return ch;
+	}
+}
+
+/*==A function that displays a path in a labyrinth==*/
+void show_path(char** labyrinth, int row, int col, point_passport* using_points, int size, koordinats E) 
+{
+	if (using_points[size].point.i != E.i || using_points[size].point.j != E.j)cout << "No path" << endl;
+	else 
+	{
+		int step = using_points[size].step;
+		char ch = character(step);
+		int i = step;
+		labyrinth[E.i][E.j] = ch;
+		koordinats point;
+		point.i = using_points[size].parent.i;
+		point.j = using_points[size].parent.j;
+		for (i; i > 0; i--) 
+		{
+			for (int n = 0; n < size; n++) 
+			{
+				if (using_points[n].point.i == point.i && using_points[n].point.j == point.j) 
+				{
+					step = using_points[n].step;
+					labyrinth[point.i][point.j] = character(step);
+					point.i = using_points[n].parent.i;
+					point.j = using_points[n].parent.j;
+				}
+			}
+		}
 	}
 }
