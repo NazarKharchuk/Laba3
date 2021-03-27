@@ -67,6 +67,7 @@ point_passport* alg_dijkstra(char** labyrinth, int row, int col, int vert_num, k
 	X=1;
 	int step_num;
 	bool finish = false;
+	int h;
 
 	while (!our_queue.is_empty()) {
 		cur_point = our_queue.first_element();
@@ -84,7 +85,8 @@ point_passport* alg_dijkstra(char** labyrinth, int row, int col, int vert_num, k
 				using_points[X].point.j = neigh_point.j;
 				using_points[X].step = step_num;
 				using_points[X].parent.i = cur_point.i;
-				using_points[X].parent.j = cur_point.j;
+				using_points[X].parent.j = cur_point.j; 
+				//cout << "!!!" << endl;
 				break;
 			}
 
@@ -96,7 +98,10 @@ point_passport* alg_dijkstra(char** labyrinth, int row, int col, int vert_num, k
 				using_points[X].parent.i= cur_point.i;
 				using_points[X].parent.j = cur_point.j;
 				X++;
+				h = pow((neigh_point.i - E.i)*(neigh_point.i - E.i) + (neigh_point.j - E.j)*(neigh_point.j - E.j),0.5);
+				neigh_point.d = h;
 				our_queue.enqueue(neigh_point);
+				//our_queue.show();
 			}
 			else {
 				if (step_num < using_points[pos].step) {
@@ -109,9 +114,9 @@ point_passport* alg_dijkstra(char** labyrinth, int row, int col, int vert_num, k
 		if (finish)break;
 	}
 
-	for (int m = 0; m < X; m++) {
+	/*for (int m = 0; m < X; m++) {
 		cout << "(" << using_points[m].point.i << " " << using_points[m].point.j << ")  " << using_points[m].step << "   (" << using_points[m].parent.i << " " << using_points[m].parent.j << ")  " << endl;
-	}
+	}*/
 
 	return using_points;
 }

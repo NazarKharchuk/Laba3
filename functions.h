@@ -4,12 +4,14 @@
 #include "queue.h"
 #include <fstream>
 #include <iomanip>
+#include <cmath>
 
 using namespace std;
 
 struct koordinats {
 	int i;
 	int j;
+	int d = 0;
 };
 
 struct point_passport {

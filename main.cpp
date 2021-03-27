@@ -21,5 +21,4 @@ int main() {
 
 	delete [] using_points;
 	delete_matr(labyrinth, row);
-	
 }

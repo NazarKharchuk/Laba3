@@ -27,6 +27,7 @@ public:
 	T first_element();	//Get the first item
 	T last_element();		//Get the last item
 	bool is_empty();		//Checks if empty
+	//void show();
 };
 
 
@@ -34,6 +35,20 @@ template <typename T>
 void queue<T>::enqueue(T item) {	//Add an item to the queue
 	end++;
 	our_queue[end] = item;
+
+	for (int i = 1; i < end; ++i)
+	{
+		for (int k = 0; k < end - i; k++)
+		{
+			if (our_queue[k].d > our_queue[k + 1].d)
+			{
+				T temp = our_queue[k];
+				our_queue[k] = our_queue[k + 1];
+				our_queue[k + 1] = temp;
+			}
+		}
+	}
+
 	num_elements++;
 };
 
@@ -61,3 +76,10 @@ bool queue<T>::is_empty() {		//Checks if empty
 	else return true;
 }
 
+/*template <typename T>
+void queue<T>::show() {
+	for (int i = start; i <= end; i++) {
+		cout <<"("<< our_queue[i].i << " : " << our_queue[i].j << ")  " << our_queue[i].d;
+	}
+	cout << endl;
+}*/
